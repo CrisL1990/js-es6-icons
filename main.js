@@ -113,26 +113,54 @@ let icons = [
 	}
 ];
 
+//Crea riferimento a container delle icone
+let iconsContainer = document.getElementById('icons-cont');
+
 //Contiene il codice html da inserire nel container delle icone
 let content = ""
 
 const selector = document.getElementById("selector");
 let selected = "";
-let preinted = "";
+
+icons.forEach(element => {
+    content+=   `<div class="icon-container">
+                    <div>
+                        <i style="color:${element.color};" class="${element.family} ${element.prefix}${element.name} icon-size"></i>
+                    </div>
+                    <div class="type-size">
+                        ${element.name}
+                    </div>
+                </div>`
+});
+
+ //Inserisce content all'interno di icons-cont nell' HTML
+ iconsContainer.innerHTML = content;
 
 selector.addEventListener('change', function(){
     content = "";
     selected = this.value;
-    console.log(selected);
+    
 
     const selezionato = icons.filter((tipo) => {
         if(tipo.type == selected){
             return true;
         }
+        
         return false
     })
 
-    console.log(selezionato);
+    if(selezionato == false){
+        icons.forEach(element => {
+            content+=   `<div class="icon-container">
+                            <div>
+                                <i style="color:${element.color};" class="${element.family} ${element.prefix}${element.name} icon-size"></i>
+                            </div>
+                            <div class="type-size">
+                                ${element.name}
+                            </div>
+                        </div>`
+        });
+    }
 
 
     //Ed associa le classi corrette alle icone
@@ -151,8 +179,7 @@ selector.addEventListener('change', function(){
     iconsContainer.innerHTML = content;
 })  
 
-//Crea riferimento a container delle icone
-let iconsContainer = document.getElementById('icons-cont');
+
 
 
 //Scorre tutti gli oggetti presente in icons
