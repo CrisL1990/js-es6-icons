@@ -121,6 +121,7 @@ let selected = "";
 let preinted = "";
 
 selector.addEventListener('change', function(){
+    content = "";
     selected = this.value;
     console.log(selected);
 
@@ -141,7 +142,7 @@ selector.addEventListener('change', function(){
                         <i style="color:${element.color};" class="${element.family} ${element.prefix}${element.name} icon-size"></i>
                     </div>
                     <div class="type-size">
-                        Cat
+                        ${element.name}
                     </div>
                 </div>`
     });
@@ -155,13 +156,3 @@ let iconsContainer = document.getElementById('icons-cont');
 
 
 //Scorre tutti gli oggetti presente in icons
-
-
-
-
-
-
-
-
-
-
