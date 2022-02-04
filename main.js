@@ -113,6 +113,7 @@ let icons = [
 	}
 ];
 
+//Crea la variabile che contiene l' array da scorrere
 let array;
 
 //Crea riferimento a container delle icone
@@ -124,32 +125,35 @@ let content = ""
 const selector = document.getElementById("selector");
 let selected = "";
 
+//Richiama creazioneArray per icons
 array = creazioneArray(icons);
 
 
- //Inserisce content all'interno di icons-cont nell' HTML
- iconsContainer.innerHTML = content;
+//Inserisce content all'interno di icons-cont nell' HTML
+iconsContainer.innerHTML = content;
 
+//Aggiunge Event listener per il cambio di selezione
 selector.addEventListener('change', function(){
+    //Resetta content
     content = "";
+
+    //Assegna a selected il valore della proprietà value
     selected = this.value;
     
-
+    //Filtra gli oggetti di icons in base alla selezione
     const selezionato = icons.filter((tipo) => {
         if(tipo.type == selected){
             return true;
         }
-        
-        return false
+        return false;
     })
 
+    //Se la selezione non corrisponde a nessuno dei vaolori ritorna tutte le icone
     if(selezionato == false){
         array = creazioneArray(icons);
     }
 
-
-    //Ed associa le classi corrette alle icone
-    
+    //Richiama creazioneArray per selezionato
     array = creazioneArray(selezionato);
 
     //Inserisce content all'interno di icons-cont nell' HTML
@@ -157,8 +161,8 @@ selector.addEventListener('change', function(){
 })  
 
 
+//Dato un array, inserisce in content il contenuto da inserire nell' html
 function creazioneArray(myArray){
-
     myArray.forEach(element => {
         content+=   `<div class="icon-container">
                         <div>
