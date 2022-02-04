@@ -113,6 +113,8 @@ let icons = [
 	}
 ];
 
+let array;
+
 //Crea riferimento a container delle icone
 let iconsContainer = document.getElementById('icons-cont');
 
@@ -122,16 +124,8 @@ let content = ""
 const selector = document.getElementById("selector");
 let selected = "";
 
-icons.forEach(element => {
-    content+=   `<div class="icon-container">
-                    <div>
-                        <i style="color:${element.color};" class="${element.family} ${element.prefix}${element.name} icon-size"></i>
-                    </div>
-                    <div class="type-size">
-                        ${element.name}
-                    </div>
-                </div>`
-});
+array = creazioneArray(icons);
+
 
  //Inserisce content all'interno di icons-cont nell' HTML
  iconsContainer.innerHTML = content;
@@ -150,36 +144,29 @@ selector.addEventListener('change', function(){
     })
 
     if(selezionato == false){
-        icons.forEach(element => {
-            content+=   `<div class="icon-container">
-                            <div>
-                                <i style="color:${element.color};" class="${element.family} ${element.prefix}${element.name} icon-size"></i>
-                            </div>
-                            <div class="type-size">
-                                ${element.name}
-                            </div>
-                        </div>`
-        });
+        array = creazioneArray(icons);
     }
 
 
     //Ed associa le classi corrette alle icone
-    selezionato.forEach(element => {
-    content+=   `<div class="icon-container">
-                    <div>
-                        <i style="color:${element.color};" class="${element.family} ${element.prefix}${element.name} icon-size"></i>
-                    </div>
-                    <div class="type-size">
-                        ${element.name}
-                    </div>
-                </div>`
-    });
+    
+    array = creazioneArray(selezionato);
 
     //Inserisce content all'interno di icons-cont nell' HTML
     iconsContainer.innerHTML = content;
 })  
 
 
+function creazioneArray(myArray){
 
-
-//Scorre tutti gli oggetti presente in icons
+    myArray.forEach(element => {
+        content+=   `<div class="icon-container">
+                        <div>
+                            <i style="color:${element.color};" class="${element.family} ${element.prefix}${element.name} icon-size"></i>
+                        </div>
+                        <div class="type-size">
+                            ${element.name}
+                        </div>
+                    </div>`
+        });
+}
