@@ -115,10 +115,10 @@ let icons = [
 
 let iconsContainer = document.getElementById('icons-cont');
 let content = ""
-icons.forEach((element) => {
+icons.forEach(element => {
     content+=   `<div class="icon-container">
                     <div>
-                        <i class="${icons.family} ${icons.prefix}${icons.name} icon-size"></i>
+                        <i style="color:${element.color};" class="${element.family} ${element.prefix}${element.name} icon-size"></i>
                     </div>
                     <div class="type-size">
                         Cat
