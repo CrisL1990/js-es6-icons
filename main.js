@@ -122,7 +122,10 @@ let iconsContainer = document.getElementById('icons-cont');
 //Contiene il codice html da inserire nel container delle icone
 let content = ""
 
+//Aquisisce il selettore dall'html
 const selector = document.getElementById("selector");
+
+//Inizializza il valore della selezione
 let selected = "";
 
 //Richiama creazioneArray per icons
