@@ -112,3 +112,18 @@ let icons = [
 		color: 'blue'
 	}
 ];
+
+let iconsContainer = document.getElementById('icons-cont');
+let content = ""
+icons.forEach((element) => {
+    content+=   `<div class="icon-container">
+                    <div>
+                        <i class="${icons.family} ${icons.prefix}${icons.name} icon-size"></i>
+                    </div>
+                    <div class="type-size">
+                        Cat
+                    </div>
+                </div>`
+});
+console.log(content);
+iconsContainer.innerHTML = content;
