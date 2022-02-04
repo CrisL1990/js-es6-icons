@@ -113,9 +113,29 @@ let icons = [
 	}
 ];
 
-let iconsContainer = document.getElementById('icons-cont');
+//Contiene il codice html da inserire nel container delle icone
 let content = ""
-icons.forEach(element => {
+
+const selector = document.getElementById("selector");
+let selected = "";
+let preinted = "";
+
+selector.addEventListener('change', function(){
+    selected = this.value;
+    console.log(selected);
+
+    const selezionato = icons.filter((tipo) => {
+        if(tipo.type == selected){
+            return true;
+        }
+        return false
+    })
+
+    console.log(selezionato);
+
+
+    //Ed associa le classi corrette alle icone
+    selezionato.forEach(element => {
     content+=   `<div class="icon-container">
                     <div>
                         <i style="color:${element.color};" class="${element.family} ${element.prefix}${element.name} icon-size"></i>
@@ -124,6 +144,24 @@ icons.forEach(element => {
                         Cat
                     </div>
                 </div>`
-});
-console.log(content);
-iconsContainer.innerHTML = content;
+    });
+
+    //Inserisce content all'interno di icons-cont nell' HTML
+    iconsContainer.innerHTML = content;
+})  
+
+//Crea riferimento a container delle icone
+let iconsContainer = document.getElementById('icons-cont');
+
+
+//Scorre tutti gli oggetti presente in icons
+
+
+
+
+
+
+
+
+
+
